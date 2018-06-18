@@ -23,18 +23,18 @@ def size()
     size[0..2]
 end 
 
-def pizzaria(meats, cheese, veggies, sauce, size)
+def pizzaria()
     puts "to choose what you want,enter the assigned number"
     puts "what meat toppings do you want on your pizza?"; print "#{meats()} : "; type_of_meat = $stdin.gets.chomp
     puts "what kind of cheese do you want on your pizza?"; print "#{cheese()} : "; type_of_cheese = $stdin.gets.chomp
     puts "what kind of veggies do you want on your pizza?"; print "#{veggies()} : "; type_of_veggies = $stdin.gets.chomp
     puts "what kind of sauce do you want on your pizza?"; print "#{sauce()} : "; type_of_sauce = $stdin.gets.chomp
-    puts "what size would you like your pizza to be?"; print "#{size()} : "; type_of_size = $stdin.gets.chomp
+    puts "what size would you like your pizza to be?"; print "#{size()} : "; p_size = $stdin.gets.chomp
     price = 0
-    case type_of_size.to_i
-    when 1; p_size = size[0]; price += 10
-    when 2; p_size = size[1]; price += 35
-    when 3; p_size = size[2]; price += 50
+    case p_size.to_i
+    when 1; p_size = "#{size[0]}"; price += 10
+    when 2; p_size = "#{size[1]}"; price += 35
+    when 3; p_size = "#{size[2]}"; price += 50
     end 
     puts "your #{p_size} pizza will come with:"
     case type_of_meat.to_i
@@ -67,8 +67,7 @@ def pizzaria(meats, cheese, veggies, sauce, size)
     when 3; p_sauce = sauce[2]; price += 3
     when 4; p_sauce = sauce[3]; price += 1
     end
-    total = price * 1.16
-    puts "that will be $#{total.round(1)}, after tax."
-    puts "enjoy your pizza"
+    total = price * 1.16; puts "that will be $#{total.round(2)}, after tax."
+    puts "enjoy your #{p_size}, #{p_meats}, #{p_cheese}, #{p_veggies}, #{p_sauce} pizza" 
 end
-pizzaria(size, meats, cheese, veggies, sauce)
+pizzaria()
